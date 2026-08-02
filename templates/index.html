@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI RAG Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+
+    <div class="logo">
+
+        <div class="robot">
+            🤖
+        </div>
+
+        <div>
+
+            <h1>AI RAG Assistant</h1>
+
+            <p>
+                Powered by Groq • LangChain • FAISS
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button id="clearChatBtn" class="clear-icon-btn" title="Clear Chat">
+            🗑️ 
+        </button>
+
+        <div class="status">
+
+            <div class="dot"></div>
+
+            Online
+
+        </div>
+
+    </div>
+
+</header>
+
+    <!-- PDF CARD -->
+
+    <section class="upload-card">
+
+        <h2>
+            📄 Upload PDF
+        </h2>
+
+        <p>
+            Upload your PDF and ask questions from it.
+        </p>
+
+        <div class="upload-box">
+            <input type="file" id="pdfFile" hidden>
+            <label for="pdfFile" class="file-btn">
+                📄 Select PDF
+            </label>
+
+            <span id="fileName">
+                No file selected
+            </span>
+
+            <button id="uploadBtn">
+                🚀 Upload PDF
+            </button>
+
+            </div>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+            
+
+        <p id="uploadStatus"></p>
+
+    </section>
+
+    <!-- CHAT -->
+
+    <section class="chat-card">
+
+        <div id="chatWindow" class="chat-window">
+
+            <div class="ai-message">
+
+                <div class="avatar">
+                    🤖
+                </div>
+
+                <div class="bubble">
+                    <h3>Welcome to AI RAG Assistant 🚀</h3>
+
+                    <p>
+                        Upload your PDF and ask questions naturally.
+                    </p>
+
+                    <div class="tips">
+
+                        💡 Examples:
+                        <br>
+                        • Summarize this PDF
+                        <br>
+                        • Explain chapter 2
+                        <br>
+                        • What is machine learning?
+                        <br>
+                        • Give important points 
+
+                    </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- INPUT -->
+
+    <section class="input-card">
+
+        <input
+
+        id="question"
+
+        type="text"
+
+        placeholder="Ask anything from your PDF...">
+
+        <button id="micBtn">
+            🎤
+        </button>
+
+        
+        
+        <button id="sendBtn">
+
+            ➜
+
+        </button>
+
+    </section>
+
+</div>
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+
+    <div class="modal-box">
+        <div class="modal-icon">⚠️</div>
+        <h2>Delete Chat?</h2>
+        <p>
+            Do you really want to permanently delete this chat? <br>
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-buttons">
+            <button id="cancelDeleteBtn" class="cancel-btn">
+                Cancel
+            </button>
+            <button id="confirmDelete" class="delete-btn">
+                Delete
+            </button>
+        </div>
+    </div> 
+</div>       
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
